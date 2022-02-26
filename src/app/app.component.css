@@ -1,0 +1,31 @@
+.app-outer-container{
+    height: 100%;
+}
+.app-inner-container{
+    width: 50%; 
+    margin-left: auto;
+    margin-right: auto;  
+    padding-top: 20px;
+}
+.app-title{
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+}
+.dark{
+    background-color: #000;
+    color:#eee;
+    transition: all 1s ease-in-out;
+}
+.light{
+    background-color: white;
+    color: #424242;
+    transition: all 1s ease-in-out;
+}
+
+/* responsive design */
+@media  screen and  (max-width: 700px)  {
+    .app-inner-container{
+        width: 90%; 
+    }
+}

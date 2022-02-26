@@ -1,0 +1,24 @@
+<div [ngClass]="theme==='light'?'light':'dark'">
+  <p mat-dialog-title>{{createMode}} Task<mat-icon class="dialog-close-btn" mat-dialog-close>close</mat-icon>
+  </p>
+  <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill" class="formInput">
+        <mat-label>Title</mat-label>
+        <input class="form-control" required matInput [(ngModel)]="taskFormData.title" name="title">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="formInput">
+        <mat-label>Description</mat-label>
+        <input class="form-control" matInput [(ngModel)]="taskFormData.description" name="description">
+      </mat-form-field>
+    </div>
+    <!-- <mat-form-field appearance="fill" class="formInput"> -->
+      <mat-checkbox class="form-control" matInput [(ngModel)]="taskFormData.doneStatus" name="doneStatus">Done</mat-checkbox>
+    <!-- </mat-form-field> -->
+    <div mat-dialog-actions>
+      <button mat-button type="submit" [disabled]="!taskForm.valid">Save</button>
+      <button mat-button mat-dialog-close *ngIf="!data.isModeAdd" (click)="delete()">Delete</button>
+    </div>
+  </form>
+</div>

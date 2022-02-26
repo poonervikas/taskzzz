@@ -1,0 +1,18 @@
+.add-task-container{
+    display: block;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #eddada;
+    margin-bottom: 20px;
+}
+
+.add-btn{
+    background-color: #5cb85c;
+    border-radius: 20px;
+}
+
+.add-btn:hover{
+    background-color: #449d44;
+    border-color: #419641;
+}
+

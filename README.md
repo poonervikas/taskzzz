@@ -1,27 +1,72 @@
-# TodoApp
+NGRX Version 11 has the minimum version requirements:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Angular version 11.x
+Angular CLI version 11.x
+TypeScript version 4.0.x
+RxJS version 6.5.x
 
-## Development server
+-------------------------------------------
+   // ERROR in src/store/app.reducer.ts:9:5 - error TS2322: Type '(state: State, action: any) => {}' is not assignable to type 'ActionReducer<State, any>'.
+      Property 'tasks' is missing in type '{}' but required in type 'State'.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    9     task: fromTask.TaskReducer
+          ~~~~
 
-## Code scaffolding
+      src/store/task-store/task.reducer.ts:6:5
+        6     tasks: Task[];
+              ~~~~~
+        'tasks' is declared here.
+      src/store/app.reducer.ts:5:5
+        5     task:fromTask.State
+              ~~~~
+        The expected type comes from property 'task' which is declared here on type 'ActionReducerMap<AppState, any>'
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+        //
 
-## Build
+        due to
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+export function TaskReducer(state = initialState, action: any) {
 
-## Running unit tests
+    switch (action.type) {
+        case TaskActions.ADD_TASK:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+        return{
+            ...state,
+            tasks:[...state.tasks,action.payload]
+        }
 
-## Running end-to-end tests
+        case TaskActions.DELETE_TASK:
+            return{
+//this
+            }
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+        case TaskActions.EDIT_TASK:
+            return{
+// and this
+            }
 
-## Further help
+        default:
+            return state;
+    }
+}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-------------------------------------------------------
+// ERROR in src/store/app.reducer.ts:9:5 - error TS2322: Type '(state: State, action: TaskActions) => { tasks: (number | Task)[]; }' is not assignable to type 'ActionReducer<State, Action>'.
+  Call signature return types '{ tasks: (number | Task)[]; }' and 'State' are incompatible.
+    The types of 'tasks' are incompatible between these types.
+      Type '(number | Task)[]' is not assignable to type 'Task[]'.
+        Type 'number | Task' is not assignable to type 'Task'.
+          Type 'number' is not assignable to type 'Task'.
+
+9     task: fromTask.TaskReducer
+      ~~~~
+
+  src/store/app.reducer.ts:5:5
+    5     task:fromTask.State
+          ~~~~
+    The expected type comes from property 'task' which is declared here on type 'ActionReducerMap<AppState, Action>'
+
+    //
+
+    due to action:TaskActions.TaskActions,
+    instead use action:any

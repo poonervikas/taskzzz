@@ -1,0 +1,55 @@
+.dark{
+    color: white;
+    background-color: #1e1919;
+    transition: all 1s ease-in-out;
+}
+.light{
+    color: black;
+    background-color: #eee;
+    transition: all 1s ease-in-out;
+}
+.task-actions-container{
+    float: right;
+    position: relative;
+    top: 15px;
+    font-size: 16px;
+}
+.task-action{
+    font-size: 20px;
+}
+.mat-card {
+    font-size: 15px;
+    font-family: 'Pacifico', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Secular One', sans-serif;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+.task-done{
+    text-decoration: line-through;
+}
+.task-bullet{
+    font-size: 15px;
+}
+.task-content{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width:400px) {
+    .task-content{
+        width: 235px;
+    }
+}
+@media screen and (min-width:960px) {
+    .task-content{
+        width: 400px;
+    }
+}
+
+small{
+    font-size: 10px;
+}
