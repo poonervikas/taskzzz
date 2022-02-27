@@ -38,7 +38,6 @@ export class CreateTaskComponent implements OnInit {
     this.taskFormData.doneStatus=this.data.doneStatus;
   }
   onSubmit(form) {
-    console.log(form.value);
     var payload: Task = {
       taskId:null,
       title: form.value.title,

@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
     this.store.select('task').subscribe(data=>{
 
     })
-    console.log(appData)
   }
 
   turnOnLightMode() {

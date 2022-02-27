@@ -2,7 +2,7 @@
     <div class="task-content">
         <mat-icon class="task-bullet">label_important</mat-icon>
         <span [ngClass]="taskData.doneStatus?'task-done':''">{{taskData.title}}</span><br>
-        <small>{{taskData.description}}</small>
+        <small>{{taskData.description ? taskData.description : 'NA'}}</small>
     </div>
     <div class="task-actions-container">
         <mat-icon class="task-action" (click)="editTask(taskData)">edit</mat-icon>
