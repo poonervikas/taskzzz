@@ -8,7 +8,8 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
+import { storageMetaReducer } from 'src/store/storage.metareducer';
 import * as fromApp from '../store/app.reducer';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -21,6 +22,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
+// console.log all actions
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function(state, action) {
+    // console.log('state', state);
+    // console.log('action', action);
+ 
+    return reducer(state, action);
+  };
+}
+ 
+export const metaReducers: MetaReducer<any>[] = [debug,storageMetaReducer];
 
 
 @NgModule({
@@ -40,7 +52,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatDialogModule, 
     MatIconModule, 
     MatInputModule,
-    StoreModule.forRoot(fromApp.appReducer), //merged reducer map
+    StoreModule.forRoot(fromApp.appReducer, { metaReducers }), //merged reducer map
     FormsModule,
     CommonModule,
     MatCheckboxModule
