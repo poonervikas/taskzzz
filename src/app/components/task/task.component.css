@@ -39,12 +39,17 @@
     text-overflow: ellipsis;
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:450px) {
     .task-content{
-        width: 235px;
+        width: 210px;
     }
 }
-@media screen and (min-width:960px) {
+@media screen and (min-width:451px) and (max-width:1000px)  {
+    .task-content{
+        width: 250px;
+    }
+}
+@media screen and (min-width:1001px) {
     .task-content{
         width: 400px;
     }
